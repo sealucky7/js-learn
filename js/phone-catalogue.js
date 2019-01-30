@@ -4,15 +4,14 @@ class PhoneCatalogue {
   constructor(options) {
     this._el = options.el;
     this._phones = options.phones;
+    const template = document.querySelector('#phone-catalogue-template').innerHTML;
+    this._compiledFunction = _.template(template);
     this._render();
   }
 
   _render() {
 
-    const template = document.querySelector('#phone-catalogue-template').innerHTML;
-    const templateFunction = _.template(template);
-
-    this._el.innerHTML = templateFunction({
+    this._el.innerHTML = this._compiledFunction({
       phones: this._phones,
     });
   }
