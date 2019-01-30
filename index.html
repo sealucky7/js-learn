@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash-compat/3.10.2/lodash.js" defer></script>
+  <script src="js/phone-page.js" defer></script>
+  <script src="js/phone-catalogue.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+<header></header>
+
+<div class="container-fluid" data-component="phone-page">
+  <div class="row">
+
+    <!--Sidebar-->
+    <div class="col-md-2">
+      <section>
+        <p>
+          Search:
+          <input>
+        </p>
+
+        <p>
+          Sort by:
+          <select>
+            <option value="name">Alphabetical</option>
+            <option value="age">Newest</option>
+          </select>
+        </p>
+      </section>
+
+      <section>
+        <p>Shopping Cart</p>
+        <ul>
+          <li>Phone 1</li>
+          <li>Phone 2</li>
+          <li>Phone 3</li>
+        </ul>
+      </section>
+    </div>
+
+    <!--Main content-->
+    <div class="col-md-10">
+
+      <div data-component="phone-catalogue"></div>
+
+
+
+    </div>
+  </div>
+</div>
+
+<footer></footer>
+
+<script type="text/template" id="phone-catalogue-template">
+
+  <ul class="phones">
+    <% phones.forEach((phone) => { %>
+      <li class="thumbnail">
+        <a href="#!/phones/<%= phone.id %>" class="thumb">
+          <img alt="<%= phone.name %>" src="<%= phone.imageUrl %>">
+        </a>
+        <div class="phones__btn-buy-wrapper">
+          <a class="btn btn-success">Add</a>
+        </div>
+
+        <a href="#!/phones/<%= phone.id %>"><%= phone.name %></a>
+        <p><%= phone.snippet %></p>
+      </li>
+    <% }); %>
+  </ul>
+
+</script>
+
+</body>
+</html>
