@@ -1,0 +1,28 @@
+{
+  "name": "js-learn",
+  "version": "1.0.0",
+  "description": "Home work Js course Kantor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sealucky7/js-learn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sealucky7/js-learn/issues"
+  },
+  "homepage": "https://github.com/sealucky7/js-learn#readme",
+  "devDependencies": {
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  },
+  "dependencies": {
+    "@webpack-cli/init": "^0.1.3"
+  }
+}

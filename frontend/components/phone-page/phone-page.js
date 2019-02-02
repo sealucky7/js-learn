@@ -1,4 +1,8 @@
-class PhonePage {
+'use strict';
+
+import PhoneCatalogue from '../phone-catalogue/phone-catalogue';
+
+export default class PhonePage {
   constructor(options) {
     this._el = options.el;
     this._catalogue = new PhoneCatalogue({
