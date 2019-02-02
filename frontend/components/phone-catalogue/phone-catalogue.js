@@ -1,17 +1,20 @@
 "use strict";
 
+import compiledFunction from './phone-catalogue.hbs';
+
 export default class PhoneCatalogue {
   constructor(options) {
     this._el = options.el;
     this._phones = options.phones;
-    const template = document.querySelector('#phone-catalogue-template').innerHTML;
-    this._compiledFunction = _.template(template);
+    const template = require('./phone-catalogue.hbs');
+
+
     this._render();
   }
 
   _render() {
 
-    this._el.innerHTML = this._compiledFunction({
+    this._el.innerHTML = compiledFunction({
       phones: this._phones,
     });
   }
