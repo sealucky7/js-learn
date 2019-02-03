@@ -7,9 +7,10 @@ export default class PhoneCatalogue {
   constructor(options) {
     this._el = options.el;
     this._phones = options.phones;
-    //const template = require('./phone-catalogue.hbs');
 
     this._render();
+
+    this._el.addEventListener('click', this._onPhoneClick.bind(this));
   }
 
   _render() {
@@ -17,6 +18,15 @@ export default class PhoneCatalogue {
     this._el.innerHTML = compiledFunction({
       phones: this._phones,
     });
+  }
+
+  _onPhoneClick(event) {
+    let phoneElement = event.target.closest('[data-element="phone"]');
+
+    if(!phoneElement) {
+      return;
+    }
+    console.log(phoneElement.dataSet.phoneId);
   }
 
 }
