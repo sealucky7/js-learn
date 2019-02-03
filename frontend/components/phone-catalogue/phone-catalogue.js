@@ -6,8 +6,7 @@ export default class PhoneCatalogue {
   constructor(options) {
     this._el = options.el;
     this._phones = options.phones;
-    const template = require('./phone-catalogue.hbs');
-
+    //const template = require('./phone-catalogue.hbs');
 
     this._render();
   }
