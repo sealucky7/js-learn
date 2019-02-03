@@ -1,6 +1,7 @@
 "use strict";
 
 import compiledFunction from './phone-catalogue.hbs';
+import './style.css';
 
 export default class PhoneCatalogue {
   constructor(options) {

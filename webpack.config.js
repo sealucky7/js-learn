@@ -1,4 +1,5 @@
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -16,7 +17,7 @@ module.exports = {
 
   module: {
     rules: [
-        {
+      {
           test: /\.hbs$/,
           loader: "handlebars-loader"
         },
@@ -29,7 +30,24 @@ module.exports = {
             presets: ['@babel/preset-env'],
           }
         }
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+        ]
+      },
     ]
-  }
+  },
+
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin()
+    ],
+  },
+  devServer: {
+    hot: true,
+    inline: true
+  },
 };
