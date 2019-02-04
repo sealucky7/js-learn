@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack-dev-server"
+    "build": "webpack-dev-server --hot --inline"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
     "handlebars-loader": "^1.7.1",
-    "html-loader": "^0.5.5",
     "raw-loader": "^1.0.0",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.1",

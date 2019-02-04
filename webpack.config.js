@@ -3,17 +3,13 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: {
-    index: './frontend/app.js',
-  },
-
+  entry: './frontend/app.js',
   output: {
-    path: path.resolve(__dirname, 'public'),
-    filename: '[name].js'
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'public')
   },
 
   watch: true,
-  //devtool: 'source-map',
 
   module: {
     rules: [
@@ -48,6 +44,6 @@ module.exports = {
   },
   devServer: {
     hot: true,
-    inline: true
+    contentBase: './public',
   },
 };

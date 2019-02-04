@@ -13,6 +13,10 @@ export default class PhoneCatalogue {
     this._el.addEventListener('click', this._onPhoneClick.bind(this));
   }
 
+  hide() {
+    this._el.classList.add('js-hidden');
+  }
+
   _render() {
 
     this._el.innerHTML = compiledFunction({
@@ -26,7 +30,12 @@ export default class PhoneCatalogue {
     if(!phoneElement) {
       return;
     }
-    console.log(phoneElement.dataSet.phoneId);
+
+    let customEvent = new CustomEvent('phoneSelected', {
+      detail: phoneElement.dataset.phoneId,
+    });
+
+    this._el.dispatchEvent(customEvent);
   }
 
 }
