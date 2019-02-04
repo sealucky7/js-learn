@@ -15,7 +15,7 @@ export default class PhonePage {
     this._viewer = new PhoneViewer({
       el: this._el.querySelector('[data-component="phone-viewer"]'),
     });
-    this._viewer.setPhone( this._getPhoneDetails(1) );
+    //this._viewer.setPhone( this._getPhoneDetails(1) );
 
     this._shoppingCart = new ShoppingCart({
       el: this._el.querySelector('[data-component="shopping-cart"]'),
@@ -30,12 +30,29 @@ export default class PhonePage {
 
   _onPhoneSelected(event) {
     let phoneId = event.detail;
-    let phone = this._getPhoneDetails(phoneId);
+    // let phone = this._getPhoneDetails(phoneId);
 
-    this._viewer.setPhone(phone);
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', `/data/phones/${phoneId}.json`, true);
+    xhr.send();
 
-    this._viewer.show();
-    this._catalogue.hide();
+    xhr.onerror = () => {
+      alert('Server is unavailable');
+    };
+
+    xhr.onload = () => {
+      if (xhr.status !== 200) {
+        console.error( xhr.status + ': ' + xhr.statusText );
+        return ;
+      }
+
+      let phone = JSON.parse(xhr.responseText);
+
+      this._viewer.setPhone(phone);
+      this._viewer.show();
+      this._catalogue.hide();
+    }
+
   }
 
   _onPhoneViewerBack() {
@@ -46,9 +63,9 @@ export default class PhonePage {
     this._shoppingCart.addProduct(event.detail);
   }
 
-  _getPhoneDetails(phonesId) {
-    return phoneFromServer;
-  }
+  // _getPhoneDetails(phonesId) {
+  //   return phoneFromServer;
+  // }
 
 }
 
