@@ -2,10 +2,11 @@
 
 import compiledFunction from './phone-catalogue.hbs';
 import './style.css';
+import Component from "../component";
 
-export default class PhoneCatalogue {
+export default class PhoneCatalogue extends Component {
   constructor(options) {
-    this._el = options.el;
+    super(options.el);
     this._phones = options.phones;
 
     this._render();
@@ -13,9 +14,6 @@ export default class PhoneCatalogue {
     this._el.addEventListener('click', this._onPhoneClick.bind(this));
   }
 
-  hide() {
-    this._el.classList.add('js-hidden');
-  }
 
   _render() {
 

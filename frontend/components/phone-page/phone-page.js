@@ -16,7 +16,9 @@ export default class PhonePage {
     });
     this._viewer.setPhone( this._getPhoneDetails(1) );
 
-    this._catalogue._el.addEventListener('phoneSelected', this._onPhoneSelected.bind(this))
+    this._catalogue._el.addEventListener('phoneSelected', this._onPhoneSelected.bind(this));
+    this._viewer._el.addEventListener('back', this._onPhoneViewerBack.bind(this));
+    this._viewer._el.addEventListener('add', this._onPhoneViewerAdd.bind(this));
 
   }
 
@@ -28,6 +30,14 @@ export default class PhonePage {
 
     this._viewer.show();
     this._catalogue.hide();
+  }
+
+  _onPhoneViewerBack() {
+    this._viewer.hide();
+    this._catalogue.show();
+  }
+  _onPhoneViewerAdd() {
+
   }
 
   _getPhoneDetails(phonesId) {
