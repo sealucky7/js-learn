@@ -7,11 +7,16 @@ import Component from "../component";
 export default class PhoneCatalogue extends Component {
   constructor(options) {
     super(options.el);
-    this._phones = options.phones;
+    this._phones = [];
 
     this._render();
 
     this._el.addEventListener('click', this._onPhoneClick.bind(this));
+  }
+
+  setPhones(phones) {
+    this._phones = phones;
+    this._render();
   }
 
 
