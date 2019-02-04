@@ -5,7 +5,17 @@ var file = new static.Server('.', {
 });
 
 function accept(req, res) {
+
+  if(!req.url.startsWith('/data/')) {
+
   file.serve(req, res);
+  return ;
+
+  }
+  //
+  // setTimeout(() => {
+  //   file.serve(req, res);
+  // }, 5000);
 }
 
 http.createServer(accept).listen(3000);

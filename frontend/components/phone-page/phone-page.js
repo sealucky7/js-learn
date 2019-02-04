@@ -33,20 +33,26 @@ export default class PhonePage {
     // let phone = this._getPhoneDetails(phoneId);
 
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', `/data/phones/${phoneId}.json`, false);
+    xhr.open('GET', `/data/phones/${phoneId}.json`, true);
     xhr.send();
 
-    if (xhr.status !== 200) {
-      alert( xhr.status + ': ' + xhr.statusText );
-      return ;
+    xhr.onerror = () => {
+      alert('Server is unavailable');
+    };
+
+    xhr.onload = () => {
+      if (xhr.status !== 200) {
+        console.error( xhr.status + ': ' + xhr.statusText );
+        return ;
+      }
+
+      let phone = JSON.parse(xhr.responseText);
+
+      this._viewer.setPhone(phone);
+      this._viewer.show();
+      this._catalogue.hide();
     }
 
-    let phone = JSON.parse(xhr.responseText);
-
-    this._viewer.setPhone(phone);
-
-    this._viewer.show();
-    this._catalogue.hide();
   }
 
   _onPhoneViewerBack() {
