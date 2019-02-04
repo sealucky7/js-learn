@@ -26,7 +26,7 @@ export default class PhoneViewer extends Component {
     this.trigger('back');
   }
   _onAddButtonClick(event) {
-    this.trigger('add');
+    this.trigger('add', this._phone.id);
   }
 
 }

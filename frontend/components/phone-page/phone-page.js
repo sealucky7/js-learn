@@ -2,6 +2,7 @@
 
 import PhoneCatalogue from '../phone-catalogue/phone-catalogue';
 import PhoneViewer from "../phone-viewer/phone-viewer";
+import ShoppingCart from "../shopping-cart/shopping-cart";
 
 export default class PhonePage {
   constructor(options) {
@@ -16,9 +17,13 @@ export default class PhonePage {
     });
     this._viewer.setPhone( this._getPhoneDetails(1) );
 
+    this._shoppingCart = new ShoppingCart({
+      el: this._el.querySelector('[data-component="shopping-cart"]'),
+    });
+
     this._catalogue.on('phoneSelected', this._onPhoneSelected.bind(this));
     this._viewer.on('back', this._onPhoneViewerBack.bind(this));
-    //this._viewer.on('add', this._onPhoneViewerAdd.bind(this));
+    this._viewer.on('add', this._onPhoneViewerAdd.bind(this));
 
   }
 
@@ -37,8 +42,8 @@ export default class PhonePage {
     this._viewer.hide();
     this._catalogue.show();
   }
-  _onPhoneViewerAdd() {
-
+  _onPhoneViewerAdd(event) {
+    this._shoppingCart.addProduct(event.detail);
   }
 
   _getPhoneDetails(phonesId) {

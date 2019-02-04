@@ -17,12 +17,12 @@
     <!--Sidebar-->
     <div class="col-md-2">
       <section>
-        <p>
+        <p data-component="filter">
           Search:
-          <input>
+          <input type="text" placeholder="Search...">
         </p>
 
-        <p>
+        <p data-component="sorter">
           Sort by:
           <select>
             <option value="name">Alphabetical</option>
@@ -31,14 +31,7 @@
         </p>
       </section>
 
-      <section>
-        <p>Shopping Cart</p>
-        <ul>
-          <li>Phone 1</li>
-          <li>Phone 2</li>
-          <li>Phone 3</li>
-        </ul>
-      </section>
+      <section data-component="shopping-cart"></section>
     </div>
 
     <!--Main content-->
