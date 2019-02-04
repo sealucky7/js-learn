@@ -1,23 +1,11 @@
-var http = require('http');
-var static = require('node-static');
-var file = new static.Server('.', {
+let http = require('http');
+let static = require('node-static');
+let file = new static.Server('.', {
   cache: 0
 });
 
-function accept(req, res) {
-
-  if(!req.url.startsWith('/data/')) {
-
+http.createServer(function(req, res) {
   file.serve(req, res);
-  return ;
-
-  }
-
-  setTimeout(() => {
-    file.serve(req, res);
-  }, 5000);
-}
-
-http.createServer(accept).listen(3000);
+}).listen(3000);
 
 console.log('Server running on port 3000');
